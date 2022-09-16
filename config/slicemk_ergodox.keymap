@@ -130,6 +130,7 @@
 				                                                 &kp SPC      &kp LCTL     &kp PGUP   &kp PGDN   &kp LSFT     &kp RET
 				                                                                           &kp LGUI   &sl 8
 			>;
+        };
 		layer_1 {
 			bindings = <
 				&bootloader
