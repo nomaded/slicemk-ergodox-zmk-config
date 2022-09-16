@@ -3,40 +3,133 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/outputs.h>
 
+#define _DVORAK 0
+#define _QWERTY 1
+#define _PUNCT_DV 2
+#define _PUNCT_QW 3
+#define _NAV_DV 4
+#define _NAV_QW 5
+#define _RESET_NUM 6
+
 / {
+    behaviors {
+        bhm: below_homerow_mods {
+            compatible = "zmk,behavior-hold-tap";
+            label = "BELOW_HOMEROW_MODS";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <200>;
+            quick-tap-ms = <0>;
+            bindings = <&kp>, <&kp>;
+        };
+    };
+
 	keymap {
 		compatible = "zmk,keymap";
 
-		// This is the default test layer meant for testing that every key on
-		// your keyboard works. Once you have completed this basic test, you can
-		// delete this first section and layer_0 will become your default layer.
-		layer_test {
+		dvorak {
 			bindings = <
 				&bootloader
-				&kp NUM_0 &kp NUM_1 &kp NUM_2 &kp NUM_3 &kp NUM_4 &kp NUM_5 &kp NUM_6 &kp NUM_0 &kp NUM_1 &kp NUM_2 &kp NUM_3 &kp NUM_4 &kp NUM_5 &kp NUM_6
-				&kp NUM_0 &kp NUM_1 &kp NUM_2 &kp NUM_3 &kp NUM_4 &kp NUM_5 &kp NUM_6 &kp NUM_0 &kp NUM_1 &kp NUM_2 &kp NUM_3 &kp NUM_4 &kp NUM_5 &kp NUM_6
-				&kp NUM_0 &kp NUM_1 &kp NUM_2 &kp NUM_3 &kp NUM_4 &kp NUM_5                     &kp NUM_1 &kp NUM_2 &kp NUM_3 &kp NUM_4 &kp NUM_5 &kp NUM_6
-				&kp NUM_0 &kp NUM_1 &kp NUM_2 &kp NUM_3 &kp NUM_4 &kp NUM_5 &kp NUM_6 &kp NUM_0 &kp NUM_1 &kp NUM_2 &kp NUM_3 &kp NUM_4 &kp NUM_5 &kp NUM_6
-				&kp NUM_0 &kp NUM_1 &kp NUM_2 &kp NUM_3 &kp NUM_4                                         &kp NUM_2 &kp NUM_3 &kp NUM_4 &kp NUM_5 &kp NUM_6
-				                                                  &kp NUM_0 &kp NUM_1 &kp NUM_0 &kp NUM_1
-				                                        &kp NUM_3 &kp NUM_4 &kp NUM_2 &kp NUM_2 &kp NUM_3 &kp NUM_4
-				                                                            &kp NUM_5 &kp NUM_5
+				&sk LALT      &kp NUMBER_1        &kp NUMBER_2 &kp NUMBER_3 &kp NUMBER_4 &kp NUMBER_5    &kp GRAVE       &kp K_APP     &kp NUMBER_6    &kp NUMBER_7  &kp NUMBER_8 &kp NUMBER_9 &kp NUMBER_0 &kp EQUAL
+				&kp TAB       &kp APOSTROPHE      &kp COMMA    &kp DOT      &kp P        &kp Y           &kp ESC         &kp ESC       &kp F           &kp G         &kp C        &kp R        &kp L        &kp BSLH
+				&bhm LCTL ESC &kp A               &kp O        &kp E        &kp U        &kp I                                         &kp D           &kp H         &kp T        &kp N        &kp S        &kp MINUS
+				&kp LSFT      &bhm LSFT SEMICOLON &bhm LALT Q  &bhm LCTL J  &bhm LGUI K  &kp X           &kp TAB         &kp TAB       &kp B           &bhm RGUI M   &bhm RCTL W  &bhm LALT V  &bhm RSFT Z  &kp RSFT
+				&none         &none               &none        &none        &kp BKSP                                                                   &kp SPC       &none        &none        &none        &none
+				                                                                         &bhm LGUI ENTER &tog _RESET_NUM &kp PGUP      &bhm LCTL TAB
+				                                                            &sl _NAV_DV  &bhm LCTL TAB   &tog _QWERTY    &kp PGDN      &bhm LGUI ENTER &sl _PUNCT_DV
+				                                                                                         &bhm LGUI ENTER &bhm LCTL TAB
 			>;
 		};
-
+		qwerty {
+			bindings = <
+				&bootloader
+				&sk LALT      &kp NUMBER_1        &kp NUMBER_2 &kp NUMBER_3 &kp NUMBER_4 &kp NUMBER_5    &kp GRAVE       &kp K_APP     &kp NUMBER_6    &kp NUMBER_7  &kp NUMBER_8 &kp NUMBER_9 &kp NUMBER_0 &kp EQUAL
+				&kp TAB       &kp APOSTROPHE      &kp COMMA    &kp DOT      &kp P        &kp Y           &kp ESC         &kp ESC       &kp F           &kp G         &kp C        &kp R        &kp L        &kp BSLH
+				&bhm LCTL ESC &kp A               &kp O        &kp E        &kp U        &kp I                                         &kp D           &kp H         &kp T        &kp N        &kp S        &kp MINUS
+				&kp LSFT      &bhm LSFT SEMICOLON &bhm LALT Q  &bhm LCTL J  &bhm LGUI K  &kp X           &kp TAB         &kp TAB       &kp B           &bhm RGUI M   &bhm RCTL W  &bhm LALT V  &bhm RSFT Z  &kp RSFT
+				&none         &none               &none        &none        &kp BKSP                                                                   &kp SPC       &none        &none        &none        &none
+				                                                                         &bhm LGUI ENTER &tog _RESET_NUM &kp PGUP      &bhm LCTL TAB
+				                                                            &sl _NAV_DV  &bhm LCTL TAB   &tog _QWERTY    &kp PGDN      &bhm LGUI ENTER &sl _PUNCT_DV
+				                                                                                         &bhm LGUI ENTER &bhm LCTL TAB
+			>;
+		};
+		punct_dv {
+			bindings = <
+				&bootloader
+				&sk LALT      &kp NUMBER_1        &kp NUMBER_2 &kp NUMBER_3 &kp NUMBER_4 &kp NUMBER_5    &kp GRAVE       &kp K_APP     &kp NUMBER_6    &kp NUMBER_7  &kp NUMBER_8 &kp NUMBER_9 &kp NUMBER_0 &kp EQUAL
+				&kp TAB       &kp APOSTROPHE      &kp COMMA    &kp DOT      &kp P        &kp Y           &kp ESC         &kp ESC       &kp F           &kp G         &kp C        &kp R        &kp L        &kp BSLH
+				&bhm LCTL ESC &kp A               &kp O        &kp E        &kp U        &kp I                                         &kp D           &kp H         &kp T        &kp N        &kp S        &kp MINUS
+				&kp LSFT      &bhm LSFT SEMICOLON &bhm LALT Q  &bhm LCTL J  &bhm LGUI K  &kp X           &kp TAB         &kp TAB       &kp B           &bhm RGUI M   &bhm RCTL W  &bhm LALT V  &bhm RSFT Z  &kp RSFT
+				&none         &none               &none        &none        &kp BKSP                                                                   &kp SPC       &none        &none        &none        &none
+				                                                                         &bhm LGUI ENTER &tog _RESET_NUM &kp PGUP      &bhm LCTL TAB
+				                                                            &sl _NAV_DV  &bhm LCTL TAB   &tog _QWERTY    &kp PGDN      &bhm LGUI ENTER &sl _PUNCT_DV
+				                                                                                         &bhm LGUI ENTER &bhm LCTL TAB
+			>;
+		};
+		punct_qw {
+			bindings = <
+				&bootloader
+				&sk LALT      &kp NUMBER_1        &kp NUMBER_2 &kp NUMBER_3 &kp NUMBER_4 &kp NUMBER_5    &kp GRAVE       &kp K_APP     &kp NUMBER_6    &kp NUMBER_7  &kp NUMBER_8 &kp NUMBER_9 &kp NUMBER_0 &kp EQUAL
+				&kp TAB       &kp APOSTROPHE      &kp COMMA    &kp DOT      &kp P        &kp Y           &kp ESC         &kp ESC       &kp F           &kp G         &kp C        &kp R        &kp L        &kp BSLH
+				&bhm LCTL ESC &kp A               &kp O        &kp E        &kp U        &kp I                                         &kp D           &kp H         &kp T        &kp N        &kp S        &kp MINUS
+				&kp LSFT      &bhm LSFT SEMICOLON &bhm LALT Q  &bhm LCTL J  &bhm LGUI K  &kp X           &kp TAB         &kp TAB       &kp B           &bhm RGUI M   &bhm RCTL W  &bhm LALT V  &bhm RSFT Z  &kp RSFT
+				&none         &none               &none        &none        &kp BKSP                                                                   &kp SPC       &none        &none        &none        &none
+				                                                                         &bhm LGUI ENTER &tog _RESET_NUM &kp PGUP      &bhm LCTL TAB
+				                                                            &sl _NAV_DV  &bhm LCTL TAB   &tog _QWERTY    &kp PGDN      &bhm LGUI ENTER &sl _PUNCT_DV
+				                                                                                         &bhm LGUI ENTER &bhm LCTL TAB
+			>;
+		};
+		nav_dv {
+			bindings = <
+				&bootloader
+				&sk LALT      &kp NUMBER_1        &kp NUMBER_2 &kp NUMBER_3 &kp NUMBER_4 &kp NUMBER_5    &kp GRAVE       &kp K_APP     &kp NUMBER_6    &kp NUMBER_7  &kp NUMBER_8 &kp NUMBER_9 &kp NUMBER_0 &kp EQUAL
+				&kp TAB       &kp APOSTROPHE      &kp COMMA    &kp DOT      &kp P        &kp Y           &kp ESC         &kp ESC       &kp F           &kp G         &kp C        &kp R        &kp L        &kp BSLH
+				&bhm LCTL ESC &kp A               &kp O        &kp E        &kp U        &kp I                                         &kp D           &kp H         &kp T        &kp N        &kp S        &kp MINUS
+				&kp LSFT      &bhm LSFT SEMICOLON &bhm LALT Q  &bhm LCTL J  &bhm LGUI K  &kp X           &kp TAB         &kp TAB       &kp B           &bhm RGUI M   &bhm RCTL W  &bhm LALT V  &bhm RSFT Z  &kp RSFT
+				&none         &none               &none        &none        &kp BKSP                                                                   &kp SPC       &none        &none        &none        &none
+				                                                                         &bhm LGUI ENTER &tog _RESET_NUM &kp PGUP      &bhm LCTL TAB
+				                                                            &sl _NAV_DV  &bhm LCTL TAB   &tog _QWERTY    &kp PGDN      &bhm LGUI ENTER &sl _PUNCT_DV
+				                                                                                         &bhm LGUI ENTER &bhm LCTL TAB
+			>;
+		};
+		nav_qw {
+			bindings = <
+				&bootloader
+				&sk LALT      &kp NUMBER_1        &kp NUMBER_2 &kp NUMBER_3 &kp NUMBER_4 &kp NUMBER_5    &kp GRAVE       &kp K_APP     &kp NUMBER_6    &kp NUMBER_7  &kp NUMBER_8 &kp NUMBER_9 &kp NUMBER_0 &kp EQUAL
+				&kp TAB       &kp APOSTROPHE      &kp COMMA    &kp DOT      &kp P        &kp Y           &kp ESC         &kp ESC       &kp F           &kp G         &kp C        &kp R        &kp L        &kp BSLH
+				&bhm LCTL ESC &kp A               &kp O        &kp E        &kp U        &kp I                                         &kp D           &kp H         &kp T        &kp N        &kp S        &kp MINUS
+				&kp LSFT      &bhm LSFT SEMICOLON &bhm LALT Q  &bhm LCTL J  &bhm LGUI K  &kp X           &kp TAB         &kp TAB       &kp B           &bhm RGUI M   &bhm RCTL W  &bhm LALT V  &bhm RSFT Z  &kp RSFT
+				&none         &none               &none        &none        &kp BKSP                                                                   &kp SPC       &none        &none        &none        &none
+				                                                                         &bhm LGUI ENTER &tog _RESET_NUM &kp PGUP      &bhm LCTL TAB
+				                                                            &sl _NAV_DV  &bhm LCTL TAB   &tog _QWERTY    &kp PGDN      &bhm LGUI ENTER &sl _PUNCT_DV
+				                                                                                         &bhm LGUI ENTER &bhm LCTL TAB
+			>;
+		};
+		reset_numpad {
+			bindings = <
+				&bootloader
+				&sk LALT      &kp NUMBER_1        &kp NUMBER_2 &kp NUMBER_3 &kp NUMBER_4 &kp NUMBER_5    &kp GRAVE       &kp K_APP     &kp NUMBER_6    &kp NUMBER_7  &kp NUMBER_8 &kp NUMBER_9 &kp NUMBER_0 &kp EQUAL
+				&kp TAB       &kp APOSTROPHE      &kp COMMA    &kp DOT      &kp P        &kp Y           &kp ESC         &kp ESC       &kp F           &kp G         &kp C        &kp R        &kp L        &kp BSLH
+				&bhm LCTL ESC &kp A               &kp O        &kp E        &kp U        &kp I                                         &kp D           &kp H         &kp T        &kp N        &kp S        &kp MINUS
+				&kp LSFT      &bhm LSFT SEMICOLON &bhm LALT Q  &bhm LCTL J  &bhm LGUI K  &kp X           &kp TAB         &kp TAB       &kp B           &bhm RGUI M   &bhm RCTL W  &bhm LALT V  &bhm RSFT Z  &kp RSFT
+				&none         &none               &none        &none        &kp BKSP                                                                   &kp SPC       &none        &none        &none        &none
+				                                                                         &bhm LGUI ENTER &tog _RESET_NUM &kp PGUP      &bhm LCTL TAB
+				                                                            &sl _NAV_DV  &bhm LCTL TAB   &tog _QWERTY    &kp PGDN      &bhm LGUI ENTER &sl _PUNCT_DV
+				                                                                                         &bhm LGUI ENTER &bhm LCTL TAB
+			>;
+		};
 		layer_0 {
 			bindings = <
 				&bootloader
-				&kp GRAV &kp NUMBER_1 &kp NUMBER_2 &kp NUMBER_3 &kp NUMBER_4 &kp NUMBER_5 &kp PRSC   &none      &kp NUMBER_6 &kp NUMBER_7 &kp NUMBER_8 &kp NUMBER_9 &kp NUMBER_0  &kp K_APP
-				&kp TAB  &kp Q        &kp W        &kp E        &kp R        &kp T        &kp CLCK   &kp M_MUTE &kp Y        &kp U        &kp I        &kp O        &kp P         &kp BSLH
-				&kp ESC  &kp A        &kp S        &kp D        &kp F        &kp G                              &kp H        &kp J        &kp K        &kp L        &kp SEMICOLON &kp BKSP
-				&sl 2    &kp Z        &kp X        &kp C        &kp V        &kp B        &kp M_VOLD &kp M_VOLU &kp N        &kp M        &kp CMMA     &kp DOT      &kp FSLH      &sl 2
-				&none    &none        &kp LALT     &kp LARW     &kp UARW                                                     &kp DARW     &kp RARW     &kp RALT     &none         &to 3
-				                                                             &kp DEL      &kp HOME   &kp END    &kp INS
-				                                                &kp SPC      &kp LCTL     &kp PGUP   &kp PGDN   &kp LSFT     &kp RET
-				                                                                          &kp LGUI   &sl 1
+				&kp GRAV &kp NUMBER_1  &kp NUMBER_2 &kp NUMBER_3 &kp NUMBER_4 &kp NUMBER_5 &kp PRSC   &none      &kp NUMBER_6 &kp NUMBER_7 &kp NUMBER_8 &kp NUMBER_9 &kp NUMBER_0 &kp K_APP
+				&kp TAB  &kp SLASH     &kp COMMA    &kp DOT      &kp P        &kp Y        &kp CLCK   &kp M_MUTE &kp F        &kp G        &kp C        &kp R        &kp L        &kp BSLH
+				&kp ESC  &kp A         &kp O        &kp E        &kp U        &kp I                              &kp D        &kp H        &kp T        &kp N        &kp S        &kp BKSP
+				&sl 9    &kp SEMICOLON &kp Q        &kp J        &kp K        &kp X        &kp M_VOLD &kp M_VOLU &kp B        &kp M        &kp W        &kp V        &kp Z        &sl 9
+				&none    &none         &kp LALT     &kp LARW     &kp UARW                                                     &kp DARW     &kp RARW     &kp RALT     &none        &to 10
+				                                                              &kp DEL      &kp HOME   &kp END    &kp INS
+				                                                 &kp SPC      &kp LCTL     &kp PGUP   &kp PGDN   &kp LSFT     &kp RET
+				                                                                           &kp LGUI   &sl 8
 			>;
-		};
 		layer_1 {
 			bindings = <
 				&bootloader
