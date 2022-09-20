@@ -62,7 +62,7 @@
 				&trans       &trans       &trans       &trans       &trans       &trans  &trans           &trans  &trans  &trans         &trans           &trans         &trans          &kp RBRC
 				&trans       &kp Q        &kp W        &kp E        &kp R        &kp T   &trans           &trans  &kp Y   &kp U          &kp I            &kp O          &kp P           &kp LBRC
 				&trans       &kp A        &kp S        &kp D        &kp F        &kp G                            &kp H   &kp J          &kp K            &kp L          &kp SEMI        &kp SQT
-				&trans       &bhm LSFT Z  &bhm LALT X  &bhm LCTL C  &bhm LGUI V  &kp B   &trans           &trans  &kp N   &bhm RGUI M    &bhm RCTL COMMA  &bhm LALT DOT  &bhm RSFT FLSH  &kp RSFT
+				&trans       &bhm LSFT Z  &bhm LALT X  &bhm LCTL C  &bhm LGUI V  &kp B   &trans           &trans  &kp N   &bhm RGUI M    &bhm RCTL COMMA  &bhm LALT DOT  &bhm RSFT FSLH  &kp RSFT
 				&none        &none        &none        &none        &trans                                                &trans         &none            &none          &none           &none
 				                                                                 &trans  &tog _RESET_NUM  &trans  &trans
 				                                                    &sl _NAV_QW  &trans  &tog _QWERTY     &trans  &trans  &sl _PUNCT_QW
