@@ -1,8 +1,15 @@
+// -*- mode: c++ -*-
+
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/outputs.h>
 
+// Each layer gets a name for readability, which is then used in the keymap
+// matrix below. The underscores don't mean anything - you can have a layer
+// called STUFF or any other name. Layer names don't all need to be of the
+// same length, obviously, and you can also skip them entirely and just use
+// numbers.
 #define _DVORAK 0
 #define _QWERTY 1
 #define _PUNCT_DV 2
@@ -10,6 +17,41 @@
 #define _NAV_DV 4
 #define _NAV_QW 5
 #define _RESET_NUM 6
+
+// Helpful defines
+// Layer-related
+#define TOG_RST &tog _RESET_NUM
+#define TOG_QW &tog _QWERTY
+#define SL_NAVD &sl _NAV_DV     // Sticky layer DV Nav layer
+#define SL_NAVQ &sl _NAV_QW     // Sticky layer QW Nav layer
+#define SL_PUND &sl _PUNCT_DV   // Sticky layer DV Punct layer
+#define SL_PUNQ &sl _PUNCT_QW   // Sticky layer DV Punct layer
+#define MO_NAVD &mo _NAV_DV     // Momentary DV Nav layer
+#define MO_NAVQ &mo _NAV_QW     // Momentary QW Nav layer
+#define MO_PUND &sl _PUNCT_DV   // Momentary DV Punct layer
+#define MO_PUNQ &sl _PUNCT_QW   // Momentary QW Punct layer
+
+// Modifier-related
+#define CTL_ESC &bhm LCTL ESC
+#define GUI_ENT &bhm LGUI ENTER
+#define CTL_TAB &bhm LCTL TAB
+#define CTL_DEL &bhm LCTL DEL
+#define LSFT_SC &bhm LSFT SEMI
+#define LALT__Q &bhm LALT Q
+#define LCTL__J &bhm LCTL J
+#define LGUI__K &bhm LGUI K
+#define RGUI__M &bhm RGUI M
+#define RCTL__W &bhm RCTL W
+#define LALT__V &bhm LALT V
+#define RSFT__Z &bhm RSFT Z
+#define LSFT__Z &bhm LSFT Z
+#define LALT__X &bhm LALT X
+#define LCTL__C &bhm LCTL C
+#define LGUI__V &bhm LGUI V
+#define RGUI__M &bhm RGUI M
+#define RCTL_CM &bhm RCTL COMMA
+#define LALT_DT &bhm LALT DOT
+#define RSFT_SH &bhm RSFT FSLH
 
 / {
     behaviors {
@@ -133,14 +175,14 @@
 //                                  `--------------------'  `--------------------'
             bindings = <
     &bootloader
-    &none        &kp F1       &kp F2        &kp F3      &kp F4         &kp F5           &none      &none            &kp F6         &kp F7       &kp F8     &kp F9    &kp F10    &kp F11
-    &none        &kp C_EJECT  &kp C_PREV    &kp C_PP    &kp C_NEXT     &none            &trans     &trans           &kp GRAVE      &kp LBKT     &kp RBKT   &kp LBRC  &kp RBRC   &kp F12
-    &trans       &none        &kp C_VOL_DN  &kp C_MUTE  &kp C_VOL_UP   &kp BSLH                                     &kp FSLH       &kp MINUS    &kp UNDER  &kp LPAR  &kp RPAR   &bhm LCTL ESC
-    &trans       &kp LG(X)    &kp LG(X)     &kp LG(C)   &kp LG(V)      &none            &kp BSLH   &kp FSLH         &kp TILDE      &kp EQUAL    &kp PLUS   &kp PIPE  &kp QMARK  &trans
-    &none        &none        &none         &none       &kp DEL                                                                    &kp SPC      &none      &none     &none      &none
-                                                                       &none            &none      &none            &none
-                                                        &tog _NAV_DV   &bhm LGUI ENTER  &none      &none            &bhm LCTL TAB  &sl _NAV_DV
-                                                                                        &kp SPACE  &bhm LGUI ENTER
+    &none        &kp F1       &kp F2        &kp F3      &kp F4        &kp F5           &none      &none            &kp F6         &kp F7       &kp F8     &kp F9    &kp F10    &kp F11
+    &none        &kp C_EJECT  &kp C_PREV    &kp C_PP    &kp C_NEXT    &none            &trans     &trans           &kp GRAVE      &kp LBKT     &kp RBKT   &kp LBRC  &kp RBRC   &kp F12
+    &trans       &none        &kp C_VOL_DN  &kp C_MUTE  &kp C_VOL_UP  &kp BSLH                                     &kp FSLH       &kp MINUS    &kp UNDER  &kp LPAR  &kp RPAR   &bhm LCTL ESC
+    &trans       &kp LG(X)    &kp LG(X)     &kp LG(C)   &kp LG(V)     &none            &kp BSLH   &kp FSLH         &kp TILDE      &kp EQUAL    &kp PLUS   &kp PIPE  &kp QMARK  &trans
+    &none        &none        &none         &none       &kp DEL                                                                   &kp SPC      &none      &none     &none      &none
+                                                                      &none            &none      &none            &none
+                                                        &mo _NAV_DV   &bhm LGUI ENTER  &none      &none            &bhm LCTL TAB  &sl _NAV_DV
+                                                                                       &kp SPACE  &bhm LGUI ENTER
             >;
         };
         punct_qw {
@@ -164,14 +206,14 @@
 //                                  `--------------------'  `--------------------'
             bindings = <
     &bootloader
-    &trans       &trans  &trans  &trans  &trans        &trans  &trans  &trans    &trans    &trans       &trans     &trans     &trans     &trans
-    &trans       &trans  &trans  &trans  &trans        &trans  &trans  &trans    &trans    &kp MINUS    &kp EQUAL  &kp UNDER  &kp PLUS   &trans
-    &trans       &trans  &trans  &trans  &trans        &trans                    &kp LBKT  &kp SQT      &kp DQT    &kp LPAR   &kp RPAR   &trans
-    &trans       &trans  &trans  &trans  &trans        &trans  &trans  &kp LBKT  &trans    &kp RBKT     &kp RBRC   &trans     &kp LBRC   &trans
-    &trans       &trans  &trans  &trans  &trans                                            &trans       &trans     &trans     &trans     &trans
-                                                       &trans  &trans  &trans    &trans
-                                         &tog _NAV_QW  &trans  &trans  &trans    &trans    &sl _NAV_QW
-                                                               &trans  &trans
+    &trans       &trans  &trans  &trans  &trans       &trans  &trans  &trans    &trans    &trans       &trans     &trans     &trans     &trans
+    &trans       &trans  &trans  &trans  &trans       &trans  &trans  &trans    &trans    &kp MINUS    &kp EQUAL  &kp UNDER  &kp PLUS   &trans
+    &trans       &trans  &trans  &trans  &trans       &trans                    &kp LBKT  &kp SQT      &kp DQT    &kp LPAR   &kp RPAR   &trans
+    &trans       &trans  &trans  &trans  &trans       &trans  &trans  &kp LBKT  &trans    &kp RBKT     &kp RBRC   &trans     &kp LBRC   &trans
+    &trans       &trans  &trans  &trans  &trans                                           &trans       &trans     &trans     &trans     &trans
+                                                      &trans  &trans  &trans    &trans
+                                         &mo _NAV_QW  &trans  &trans  &trans    &trans    &sl _NAV_QW
+                                                              &trans  &trans
             >;
         };
         nav_dv {
@@ -195,14 +237,14 @@
 //                                  `--------------------'  `--------------------'
             bindings = <
     &bootloader
-    &none        &kp F1          &kp F2    &kp F3    &kp F4         &kp F5           &none          &none            &kp F6         &kp F7          &kp F8     &kp F9     &kp F10    &kp F11
-    &none        &bhm LCTL HOME  &none     &kp UP    &kp PG_UP      &bhm LCTL END    &kp ESC        &kp ESC          &kp GRAVE      &kp LPAR        &kp RPAR   &kp RBKT   &kp RBRC   &kp F12
-    &trans       &kp HOME        &kp LEFT  &kp DOWN  &kp RIGHT      &kp END                                          &kp FSLH       &kp LEFT        &kp DOWN   &kp UP     &kp RIGHT  &trans
-    &trans       &none           &none     &none     &kp PG_DN      &kp DEL          &kp BSLH       &kp FSLH         &kp TILDE      &kp HOME        &kp PG_DN  &kp PG_UP  &kp END    &trans
-    &none        &none           &none     &none     &kp SPACE                                                                      &kp BSPC        &none      &none      &none      &none
-                                                                    &none            &none          &none            &none
-                                                     &sl _PUNCT_DV  &bhm LGUI ENTER  &none          &none            &bhm LCTL DEL  &tog _PUNCT_DV
-                                                                                     &bhm LCTL TAB  &bhm LGUI ENTER
+    &none        &kp F1        &kp F2    &kp F3    &kp F4         &kp F5           &none          &none            &kp F6         &kp F7         &kp F8     &kp F9     &kp F10    &kp F11
+    &none        &kp LC(HOME)  &none     &kp UP    &kp PG_UP      &kp LC(END)      &kp ESC        &kp ESC          &kp GRAVE      &kp LPAR       &kp RPAR   &kp RBKT   &kp RBRC   &kp F12
+    &trans       &kp HOME      &kp LEFT  &kp DOWN  &kp RIGHT      &kp END                                          &kp FSLH       &kp LEFT       &kp DOWN   &kp UP     &kp RIGHT  &trans
+    &trans       &none         &none     &none     &kp PG_DN      &kp DEL          &kp BSLH       &kp FSLH         &kp TILDE      &kp HOME       &kp PG_DN  &kp PG_UP  &kp END    &trans
+    &none        &none         &none     &none     &kp SPACE                                                                      &kp BSPC       &none      &none      &none      &none
+                                                                  &none            &none          &none            &none
+                                                   &sl _PUNCT_DV  &bhm LGUI ENTER  &none          &none            &bhm LCTL DEL  &mo _PUNCT_DV
+                                                                                   &bhm LCTL TAB  &bhm LGUI ENTER
            >;
         };
         nav_qw {
@@ -226,13 +268,13 @@
 //                                  `--------------------'  `--------------------'
             bindings = <
     &bootloader
-    &trans       &trans  &trans  &trans  &trans         &trans  &trans  &trans    &trans    &trans          &trans    &trans     &trans    &trans
-    &trans       &trans  &trans  &trans  &trans         &trans  &trans  &trans    &trans    &kp LPAR        &kp RPAR  &kp EQUAL  &kp PLUS  &trans
-    &trans       &trans  &trans  &trans  &trans         &trans                    &kp LBKT  &trans          &trans    &trans     &trans    &trans
-    &trans       &trans  &trans  &trans  &trans         &trans  &trans  &kp LBKT  &trans    &trans          &trans    &trans     &trans    &trans
-    &trans       &trans  &trans  &trans  &trans                                             &trans          &trans    &trans     &trans    &trans
+    &trans       &trans  &trans  &trans  &trans         &trans  &trans  &trans    &trans    &trans         &trans    &trans     &trans    &trans
+    &trans       &trans  &trans  &trans  &trans         &trans  &trans  &trans    &trans    &kp LPAR       &kp RPAR  &kp EQUAL  &kp PLUS  &trans
+    &trans       &trans  &trans  &trans  &trans         &trans                    &kp LBKT  &trans         &trans    &trans     &trans    &trans
+    &trans       &trans  &trans  &trans  &trans         &trans  &trans  &kp LBKT  &trans    &trans         &trans    &trans     &trans    &trans
+    &trans       &trans  &trans  &trans  &trans                                             &trans         &trans    &trans     &trans    &trans
                                                         &trans  &trans  &trans    &trans
-                                         &sl _PUNCT_QW  &trans  &trans  &trans    &trans    &tog _PUNCT_QW
+                                         &sl _PUNCT_QW  &trans  &trans  &trans    &trans    &mo _PUNCT_QW
                                                                 &trans  &trans
            >;
         };
