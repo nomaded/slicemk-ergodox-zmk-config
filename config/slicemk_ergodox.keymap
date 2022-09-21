@@ -19,8 +19,22 @@
             #binding-cells = <2>;
             flavor = "tap-preferred";
             tapping-term-ms = <200>;
-            quick-tap-ms = <0>;
+            quick-tap-ms = <100>;
             bindings = <&kp>, <&kp>;
+        };
+    };
+
+    combos {
+        compatible = "zmk,combos";
+        caplk: combo_capslock {
+            timeout-ms = <150>;
+            key-positions = <41 54>;
+            bindings = <&kp CAPSLOCK>;
+        };
+        capwd: combo_capsword {
+            timeout-ms = <150>;
+            key-positions = <19 24>;
+            bindings = <&caps_word>;
         };
     };
 
@@ -28,6 +42,8 @@
         compatible = "zmk,keymap";
 
         dvorak {
+//
+// default, dvorak in keyboard, qwerty in OS
 // ,--------------------------------------------------.        ,--------------------------------------------------.
 // | LAlt   | 1 !  | 2 @  | 3 #  | 4 $  | 5 %  | ` ~  |        | App  | 6 ^  | 7 &  | 8 *  | 9 (  | 0 )  |  = +   |
 // |--------+------+------+------+------+-------------|        |------+------+------+------+------+------+--------|
@@ -45,18 +61,29 @@
 //                                  |      | Tab  | G_Ent|  | C_Tab| Entr |      |
 //                                  `--------------------'  `--------------------'
             bindings = <
+//  0
     &bootloader
+//  1              2               3            4            5            6                7                8              9                10             11           12           13           14
     &sk LALT       &kp N1          &kp N2       &kp N3       &kp N4       &kp N5           &kp GRAVE        &kp K_APP      &kp N6           &kp N7         &kp N8       &kp N9       &kp N0       &kp EQUAL
+//  15             16              17           18           19           20               21               22             23               24             25           26           27           28
     &kp TAB        &kp SQT         &kp COMMA    &kp DOT      &kp P        &kp Y            &kp ESC          &kp ESC        &kp F            &kp G          &kp C        &kp R        &kp L        &kp FSLH
+//  29             30              31           32           33           34                                               35               36             37           38           39           40
     &bhm LCTL ESC  &kp A           &kp O        &kp E        &kp U        &kp I                                            &kp D            &kp H          &kp T        &kp N        &kp S        &kp MINUS
+//  41             42              43           44           45           46               47               48             49               50             51           52           53           54
     &kp LSFT       &bhm LSFT SEMI  &bhm LALT Q  &bhm LCTL J  &bhm LGUI K  &kp X            &kp TAB          &kp TAB        &kp B            &bhm RGUI M    &bhm RCTL W  &bhm LALT V  &bhm RSFT Z  &kp RSFT
+//  55             56              57           58           59                                                                             60             61           62           63           64
     &none          &none           &none        &none        &kp BKSP                                                                       &kp SPACE      &none        &none        &none        &none
+//                                                                        65               66               67             68
                                                                           &bhm LGUI ENTER  &tog _RESET_NUM  &kp PG_UP      &bhm LCTL TAB
+//                                                           69           70               71               72             73               74
                                                              &sl _NAV_DV  &bhm LCTL TAB    &tog _QWERTY     &kp PG_DN      &bhm LGUI ENTER  &sl _PUNCT_DV
+//                                                                                         75               76
                                                                                            &bhm LGUI ENTER  &bhm LCTL TAB
             >;
         };
         qwerty {
+//
+// qwerty in keyboard, dvorak in OS
 // ,--------------------------------------------------.        ,--------------------------------------------------.
 // | LAlt   | 1 !  | 2 @  | 3 #  | 4 $  | 5 %  | ` ~  |        | App  | 6 ^  | 7 &  | 8 *  | 9 (  | 0 )  |  ] }   |
 // |--------+------+------+------+------+-------------|        |------+------+------+------+------+------+--------|
@@ -86,6 +113,8 @@
             >;
         };
         punct_dv {
+//
+// punctpad, dvorak in keyboard, qwerty in OS
 // ,--------------------------------------------------.        ,--------------------------------------------------.
 // |        | F1   | F2   | F3   | F4   | F5   |      |        |      | F6   | F7   | F8   | F9   | F10  | F11    |
 // |--------+------+------+------+------+-------------|        |------+------+------+------+------+------+--------|
@@ -102,70 +131,142 @@
 //                                  | ~L4  |      |------|  |------|      |SL(L4)|
 //                                  |      | Entr | Spce |  | G_Ent| Tab  |      |
 //                                  `--------------------'  `--------------------'
-			bindings = <
-				&bootloader
-				&none        &kp F1       &kp F2        &kp F3      &kp F4         &kp F5           &none      &none            &kp F6         &kp F7       &kp F8     &kp F9    &kp F10    &kp F11
-				&none        &kp C_EJECT  &kp C_PREV    &kp C_PP    &kp C_NEXT     &none            &trans     &trans           &kp GRAVE      &kp LBKT     &kp RBKT   &kp LBRC  &kp RBRC   &kp F12
-				&trans       &none        &kp C_VOL_DN  &kp C_MUTE  &kp C_VOL_UP   &kp BSLH                                     &kp FSLH       &kp MINUS    &kp UNDER  &kp LPAR  &kp RPAR   &bhm LCTL ESC
-				&trans       &kp LG(X)    &kp LG(X)     &kp LG(C)   &kp LG(V)      &none            &kp BSLH   &kp FSLH         &kp TILDE      &kp EQUAL    &kp PLUS   &kp PIPE  &kp QMARK  &trans
-				&none        &none        &none         &none       &kp DEL                                                                    &kp SPC      &none      &none     &none      &none
-				                                                                   &none            &none      &none            &none
-				                                                    &tog _NAV_DV   &bhm LGUI ENTER  &none      &none            &bhm LCTL TAB  &sl _NAV_DV
-				                                                                                    &kp SPACE  &bhm LGUI ENTER
-			>;
-		};
-		punct_qw {
-			bindings = <
-				&bootloader
-				&sk LALT      &kp NUMBER_1        &kp NUMBER_2 &kp NUMBER_3 &kp NUMBER_4 &kp NUMBER_5    &kp GRAVE       &kp K_APP      &kp NUMBER_6    &kp NUMBER_7  &kp NUMBER_8 &kp NUMBER_9 &kp NUMBER_0 &kp EQUAL
-				&kp TAB       &kp APOSTROPHE      &kp COMMA    &kp DOT      &kp P        &kp Y           &kp ESC         &kp ESC        &kp F           &kp G         &kp C        &kp R        &kp L        &kp BSLH
-				&bhm LCTL ESC &kp A               &kp O        &kp E        &kp U        &kp I                                          &kp D           &kp H         &kp T        &kp N        &kp S        &kp MINUS
-				&kp LSFT      &bhm LSFT SEMICOLON &bhm LALT Q  &bhm LCTL J  &bhm LGUI K  &kp X           &kp TAB         &kp TAB        &kp B           &bhm RGUI M   &bhm RCTL W  &bhm LALT V  &bhm RSFT Z  &kp RSFT
-				&none         &none               &none        &none        &kp BKSP                                                                    &kp SPACE     &none        &none        &none        &none
-				                                                                         &bhm LGUI ENTER &tog _RESET_NUM &kp PGUP       &bhm LCTL TAB
-				                                                            &sl _NAV_DV  &bhm LCTL TAB   &tog _QWERTY    &kp PGDN       &bhm LGUI ENTER &sl _PUNCT_DV
-				                                                                                         &bhm LGUI ENTER &bhm LCTL TAB
-			>;
-		};
-		nav_dv {
-			bindings = <
-				&bootloader
-				&none        &kp F1          &kp F2    &kp F3    &kp F4         &kp F5           &none          &none            &kp F6         &kp F7          &kp F8     &kp F9     &kp F10    &kp F11
-				&none        &bhm LCTL HOME  &none     &kp UP    &kp PG_UP      &bhm LCTL END    &kp ESC        &kp ESC          &kp GRAVE      &kp LPAR        &kp RPAR   &kp RBKT   &kp RBRC   &kp F12
-				&trans       &kp HOME        &kp LEFT  &kp DOWN  &kp RIGHT      &kp END                                          &kp FSLH       &kp LEFT        &kp DOWN   &kp UP     &kp RIGHT  &trans
-				&trans       &none           &none     &none     &kp PG_DN      &kp DEL          &kp BSLH       &kp FSLH         &kp TILDE      &kp HOME        &kp PG_DN  &kp PG_UP  &kp END    &trans
-				&none        &none           &none     &none     &kp SPACE                                                                      &kp BSPC        &none      &none      &none      &none
-				                                                                &none            &none          &none            &none
-				                                                 &sl _PUNCT_DV  &bhm LGUI ENTER  &none          &none            &bhm LCTL DEL  &tog _PUNCT_DV
-				                                                                                 &bhm LCTL TAB  &bhm LGUI ENTER
-			>;
-		};
-		nav_qw {
-			bindings = <
-				&bootloader
-				&sk LALT      &kp NUMBER_1        &kp NUMBER_2 &kp NUMBER_3 &kp NUMBER_4 &kp NUMBER_5    &kp GRAVE       &kp K_APP     &kp NUMBER_6    &kp NUMBER_7  &kp NUMBER_8 &kp NUMBER_9 &kp NUMBER_0 &kp EQUAL
-				&kp TAB       &kp APOSTROPHE      &kp COMMA    &kp DOT      &kp P        &kp Y           &kp ESC         &kp ESC       &kp F           &kp G         &kp C        &kp R        &kp L        &kp BSLH
-				&bhm LCTL ESC &kp A               &kp O        &kp E        &kp U        &kp I                                         &kp D           &kp H         &kp T        &kp N        &kp S        &kp MINUS
-				&kp LSFT      &bhm LSFT SEMICOLON &bhm LALT Q  &bhm LCTL J  &bhm LGUI K  &kp X           &kp TAB         &kp TAB       &kp B           &bhm RGUI M   &bhm RCTL W  &bhm LALT V  &bhm RSFT Z  &kp RSFT
-				&none         &none               &none        &none        &kp BKSP                                                                   &kp SPACE     &none        &none        &none        &none
-				                                                                         &bhm LGUI ENTER &tog _RESET_NUM &kp PGUP      &bhm LCTL TAB
-				                                                            &sl _NAV_DV  &bhm LCTL TAB   &tog _QWERTY    &kp PGDN      &bhm LGUI ENTER &sl _PUNCT_DV
-				                                                                                         &bhm LGUI ENTER &bhm LCTL TAB
-			>;
-		};
-		reset_numpad {
-			bindings = <
-				&bootloader
-				&sk LALT      &kp NUMBER_1        &kp NUMBER_2 &kp NUMBER_3 &kp NUMBER_4 &kp NUMBER_5    &kp GRAVE       &kp K_APP     &kp NUMBER_6    &kp NUMBER_7  &kp NUMBER_8 &kp NUMBER_9 &kp NUMBER_0 &kp EQUAL
-				&kp TAB       &kp APOSTROPHE      &kp COMMA    &kp DOT      &kp P        &kp Y           &kp ESC         &kp ESC       &kp F           &kp G         &kp C        &kp R        &kp L        &kp BSLH
-				&bhm LCTL ESC &kp A               &kp O        &kp E        &kp U        &kp I                                         &kp D           &kp H         &kp T        &kp N        &kp S        &kp MINUS
-				&kp LSFT      &bhm LSFT SEMICOLON &bhm LALT Q  &bhm LCTL J  &bhm LGUI K  &kp X           &kp TAB         &kp TAB       &kp B           &bhm RGUI M   &bhm RCTL W  &bhm LALT V  &bhm RSFT Z  &kp RSFT
-				&none         &none               &none        &none        &kp BKSP                                                                   &kp SPACE     &none        &none        &none        &none
-				                                                                         &bhm LGUI ENTER &tog _RESET_NUM &kp PGUP      &bhm LCTL TAB
-				                                                            &sl _NAV_DV  &bhm LCTL TAB   &tog _QWERTY    &kp PGDN      &bhm LGUI ENTER &sl _PUNCT_DV
-				                                                                                         &bhm LGUI ENTER &bhm LCTL TAB
-			>;
-		};
+            bindings = <
+    &bootloader
+    &none        &kp F1       &kp F2        &kp F3      &kp F4         &kp F5           &none      &none            &kp F6         &kp F7       &kp F8     &kp F9    &kp F10    &kp F11
+    &none        &kp C_EJECT  &kp C_PREV    &kp C_PP    &kp C_NEXT     &none            &trans     &trans           &kp GRAVE      &kp LBKT     &kp RBKT   &kp LBRC  &kp RBRC   &kp F12
+    &trans       &none        &kp C_VOL_DN  &kp C_MUTE  &kp C_VOL_UP   &kp BSLH                                     &kp FSLH       &kp MINUS    &kp UNDER  &kp LPAR  &kp RPAR   &bhm LCTL ESC
+    &trans       &kp LG(X)    &kp LG(X)     &kp LG(C)   &kp LG(V)      &none            &kp BSLH   &kp FSLH         &kp TILDE      &kp EQUAL    &kp PLUS   &kp PIPE  &kp QMARK  &trans
+    &none        &none        &none         &none       &kp DEL                                                                    &kp SPC      &none      &none     &none      &none
+                                                                       &none            &none      &none            &none
+                                                        &tog _NAV_DV   &bhm LGUI ENTER  &none      &none            &bhm LCTL TAB  &sl _NAV_DV
+                                                                                        &kp SPACE  &bhm LGUI ENTER
+            >;
+        };
+        punct_qw {
+//
+// punctpad, qwerty in keyboard, dvorak in OS
+// ,--------------------------------------------------.        ,--------------------------------------------------.
+// |        | F1   | F2   | F3   | F4   | F5   |      |        |      | F6   | F7   | F8   | F9   | F10  | F11    |
+// |--------+------+------+------+------+-------------|        |------+------+------+------+------+------+--------|
+// |        | Eject| Prev | Play | Next |      | Esc  |        | Esc  | `    | -    | =    | _    | +    | F12    |
+// |--------+------+------+------+------+------|      |        |      |------+------+------+------+------+--------|
+// | C_Esc  |      |Vol Dn| Mute |Vol Up| \    |------|        |------| [    | '    | "    | (    | )    | C_Esc  |
+// |--------+------+------+------+------+------| \    |        | [    |------+------+------+------+------+--------|
+// | LShift | Undo | Cut  | Copy | Paste|      |      |        |      | ~    | ]    | }    | |    | {    | RShift |
+// `--------+------+------+------+------+-------------'        `-------------+------+------+------+------+--------'
+//   |      |      |      |      | Del  |  ,-------------.  ,-------------.  | Spce |      |      |      |      |
+//   `----------------------------------'  |      |      |  |      |      |  `----------------------------------'
+//                                  ,------|------|------|  |------+------+------.
+//                                  |      | Gui  |      |  |      | Ctrl |      |
+//                                  | ~L5  |      |------|  |------|      |SL(L5)|
+//                                  |      | Entr | Spce |  | G_Ent| Tab  |      |
+//                                  `--------------------'  `--------------------'
+            bindings = <
+    &bootloader
+    &trans       &trans  &trans  &trans  &trans        &trans  &trans  &trans    &trans    &trans       &trans     &trans     &trans     &trans
+    &trans       &trans  &trans  &trans  &trans        &trans  &trans  &trans    &trans    &kp MINUS    &kp EQUAL  &kp UNDER  &kp PLUS   &trans
+    &trans       &trans  &trans  &trans  &trans        &trans                    &kp LBKT  &kp SQT      &kp DQT    &kp LPAR   &kp RPAR   &trans
+    &trans       &trans  &trans  &trans  &trans        &trans  &trans  &kp LBKT  &trans    &kp RBKT     &kp RBRC   &trans     &kp LBRC   &trans
+    &trans       &trans  &trans  &trans  &trans                                            &trans       &trans     &trans     &trans     &trans
+                                                       &trans  &trans  &trans    &trans
+                                         &tog _NAV_QW  &trans  &trans  &trans    &trans    &sl _NAV_QW
+                                                               &trans  &trans
+            >;
+        };
+        nav_dv {
+//
+// nav, dvorak in keyboard, qwerty in OS
+// ,--------------------------------------------------.        ,--------------------------------------------------.
+// |        | F1   | F2   | F3   | F4   | F5   |      |        |      | F6   | F7   | F8   | F9   | F10  | F11    |
+// |--------+------+------+------+------+-------------|        |------+------+------+------+------+------+--------|
+// |        |C(Hom)|      | Up   | PgUp |C(End)| Esc  |        | Esc  | `    | (    | )    | ]    | }    | F12    |
+// |--------+------+------+------+------+------|      |        |      |------+------+------+------+------+--------|
+// | C_Esc  | Home | Left | Down | Rght | End  |------|        |------| /    | Left | Down | Up   | Rght | C_Esc  |
+// |--------+------+------+------+------+------| \    |        | /    |------+------+------+------+------+--------|
+// | LShift |      |      |      | PgDn | Del  |      |        |      | ~    | Home | PgDn | PgUp | End  | RShift |
+// `--------+------+------+------+------+-------------'        `-------------+------+------+------+------+--------'
+//   |      |      |      |      | Spce |  ,-------------.  ,-------------.  | BkSp |      |      |      |      |
+//   `----------------------------------'  |      |      |  |      |      |  `----------------------------------'
+//                                  ,------|------|------|  |------+------+------.
+//                                  |      | Gui  |      |  |      | Ctrl |      |
+//                                  |SL(L2)|      |------|  |------|      | ~L2  |
+//                                  |      | Entr | C_Tab|  | G_Ent| Del  |      |
+//                                  `--------------------'  `--------------------'
+            bindings = <
+    &bootloader
+    &none        &kp F1          &kp F2    &kp F3    &kp F4         &kp F5           &none          &none            &kp F6         &kp F7          &kp F8     &kp F9     &kp F10    &kp F11
+    &none        &bhm LCTL HOME  &none     &kp UP    &kp PG_UP      &bhm LCTL END    &kp ESC        &kp ESC          &kp GRAVE      &kp LPAR        &kp RPAR   &kp RBKT   &kp RBRC   &kp F12
+    &trans       &kp HOME        &kp LEFT  &kp DOWN  &kp RIGHT      &kp END                                          &kp FSLH       &kp LEFT        &kp DOWN   &kp UP     &kp RIGHT  &trans
+    &trans       &none           &none     &none     &kp PG_DN      &kp DEL          &kp BSLH       &kp FSLH         &kp TILDE      &kp HOME        &kp PG_DN  &kp PG_UP  &kp END    &trans
+    &none        &none           &none     &none     &kp SPACE                                                                      &kp BSPC        &none      &none      &none      &none
+                                                                    &none            &none          &none            &none
+                                                     &sl _PUNCT_DV  &bhm LGUI ENTER  &none          &none            &bhm LCTL DEL  &tog _PUNCT_DV
+                                                                                     &bhm LCTL TAB  &bhm LGUI ENTER
+           >;
+        };
+        nav_qw {
+//
+// nav, qwerty in keyboard, dvorak in OS
+// ,--------------------------------------------------.        ,--------------------------------------------------.
+// |        | F1   | F2   | F3   | F4   | F5   |      |        |      | F6   | F7   | F8   | F9   | F10  | F11    |
+// |--------+------+------+------+------+-------------|        |------+------+------+------+------+------+--------|
+// |        |C(Hom)|      | Up   | PgUp |C(End)| Esc  |        | Esc  | `    | (    | )    | =    | +    | F12    |
+// |--------+------+------+------+------+------|      |        |      |------+------+------+------+------+--------|
+// | C_Esc  | Home | Left | Down | Rght | End  |------|        |------| [    | Left | Down | Up   | Rght | C_Esc  |
+// |--------+------+------+------+------+------| \    |        | [    |------+------+------+------+------+--------|
+// | LShift |      |      |      | PgDn | Del  |      |        |      | ~    | Home | PgDn | PgUp | End  | RShift |
+// `--------+------+------+------+------+-------------'        `-------------+------+------+------+------+--------'
+//   |      |      |      |      | Spce |  ,-------------.  ,-------------.  | BkSp |      |      |      |      |
+//   `----------------------------------'  |      |      |  |      |      |  `----------------------------------'
+//                                  ,------|------|------|  |------+------+------.
+//                                  |      | Gui  |      |  |      | Ctrl |      |
+//                                  |SL(L3)|      |------|  |------|      | ~L3  |
+//                                  |      | Entr | C_Tab|  | G_Ent| Del  |      |
+//                                  `--------------------'  `--------------------'
+            bindings = <
+    &bootloader
+    &trans       &trans  &trans  &trans  &trans         &trans  &trans  &trans    &trans    &trans          &trans    &trans     &trans    &trans
+    &trans       &trans  &trans  &trans  &trans         &trans  &trans  &trans    &trans    &kp LPAR        &kp RPAR  &kp EQUAL  &kp PLUS  &trans
+    &trans       &trans  &trans  &trans  &trans         &trans                    &kp LBKT  &trans          &trans    &trans     &trans    &trans
+    &trans       &trans  &trans  &trans  &trans         &trans  &trans  &kp LBKT  &trans    &trans          &trans    &trans     &trans    &trans
+    &trans       &trans  &trans  &trans  &trans                                             &trans          &trans    &trans     &trans    &trans
+                                                        &trans  &trans  &trans    &trans
+                                         &sl _PUNCT_QW  &trans  &trans  &trans    &trans    &tog _PUNCT_QW
+                                                                &trans  &trans
+           >;
+        };
+        reset_numpad {
+//
+// reset, and numpad
+// ,--------------------------------------------------.        ,--------------------------------------------------.
+// |  BtSl0 | Np - | Np * | Np / | NmLk |      | Reset|        | Reset|      | NmLk | Np / | Np * | Np - | ScrLk  |
+// |--------+------+------+------+------+-------------|        |------+------+------+------+------+------+--------|
+// |  BtSl1 | Np + | Np 9 | Np 8 | Np 7 |      | Bt   |        |      |      | Np 7 | Np 8 | Np 9 | Np + | PrtScn |
+// |--------+------+------+------+------+------| Clr  |        |      |------+------+------+------+------+--------|
+// |  BtSl2 | Np = | Np 6 | Np 5 | Np 4 |      |------|        |------|      | Np 4 | Np 5 | Np 6 | Np = | Pause  |
+// |--------+------+------+------+------+------| Gui  |        | Ctrl |------+------+------+------+------+--------|
+// |  BtSl3 | Np . | Np 3 | Np 2 | Np 1 | Np 0 | Entr |        | Tab  | Np 0 | Np 1 | Np 2 | Np 3 | Np . | RShift |
+// `--------+------+------+------+------+-------------'        `-------------+------+------+------+------+--------'
+//   |BtSl4 |      |      |      | BkSp |  ,-------------.  ,-------------.  | Spce |      |      |      |      |
+//   `----------------------------------'  |      | -L6  |  |      |      |  `----------------------------------'
+//                                  ,------|------|------|  |------+------+------.
+//                                  |NumPad|NumPad|      |  |      |NumPad|NumPad|
+//                                  |      |      |------|  |------|      |      |
+//                                  |  0   | Entr |      |  |      | Ent  |  0   |
+//                                  `--------------------'  `--------------------'
+            bindings = <
+    &bootloader
+    &bt BT_SEL 0  &kp KP_MINUS        &kp KP_ASTERISK &kp KP_SLASH &kp KP_NLCK  &none           &bootloader     &bootloader   &none           &kp KP_NLCK   &kp KP_SLASH &kp KP_ASTERISK &kp KP_MINUS &kp SLCK
+    &bt BT_SEL 1  &kp KP_PLUS         &kp KP_N9       &kp KP_N8    &kp KP_N7    &none           &bt BT_CLR      &none         &none           &kp KP_N7     &kp KP_N8    &kp KP_N9       &kp KP_PLUS  &kp PSCRN
+    &bt BT_SEL 2  &kp KP_EQUAL        &kp KP_N6       &kp KP_N5    &kp KP_N4    &none                                         &none           &kp KP_N4     &kp KP_N5    &kp KP_N6       &kp KP_EQUAL &kp PAUSE_BREAK
+    &bt BT_SEL 3  &kp KP_DOT          &kp KP_N3       &kp KP_N2    &kp KP_N1    &kp KP_N0       &bhm LGUI ENTER &bhm LCTL TAB &kp KP_N0       &kp KP_N1     &kp KP_N2    &kp KP_N3       &kp KP_DOT   &trans
+    &bt BT_SEL 4  &none               &none           &none        &kp BKSP                                                                   &kp SPACE     &none        &none           &none        &none
+                                                                                &none           &tog _RESET_NUM &none         &none
+                                                                   &kp KP_N0    &kp KP_ENTER    &none           &none         &kp KP_ENTER    &kp KP_N0
+                                                                                                &none           &none
+            >;
+        };
 		layer_0 {
 			bindings = <
 				&bootloader
