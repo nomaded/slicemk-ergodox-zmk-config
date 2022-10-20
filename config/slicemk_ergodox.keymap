@@ -53,6 +53,7 @@
 #define LALT_DT &bhm LALT DOT
 #define RSFT_SH &bhm RSFT FSLH
 
+
 / {
     behaviors {
         bhm: below_homerow_mods {
