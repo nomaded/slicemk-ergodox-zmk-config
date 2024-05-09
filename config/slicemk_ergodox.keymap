@@ -8,7 +8,7 @@
 // 20240609 - no support for underglow yet from upstream main branch.
 //   Need to use Xudong's personal branch: https://github.com/xudongzheng/ergodox-zmk-config/blob/underglow/config/west.yml#L2-L9
 //   See for more info: https://discord.com/channels/804036937571631124/852408228038180894/1077722392601841744
-//#include <dt-bindings/zmk/rgb.h>
+#include <dt-bindings/zmk/rgb.h>
 
 // Each layer gets a name for readability, which is then used in the keymap
 // matrix below. The underscores don't mean anything - you can have a layer
