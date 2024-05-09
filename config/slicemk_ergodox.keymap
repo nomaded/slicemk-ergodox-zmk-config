@@ -90,9 +90,9 @@
 
     // Time (ms) before sticky layer is released
     // matches QMK setting
-    &sl {
-        release-after-ms = <1500>;
-    };
+    // &sl {
+    //     release-after-ms = <1500>;
+    // };
 
     keymap {
         compatible = "zmk,keymap";
