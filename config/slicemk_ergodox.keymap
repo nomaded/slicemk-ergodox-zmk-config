@@ -4,6 +4,8 @@
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/outputs.h>
+// support for RGB underglow
+#include <dt-bindings/zmk/rgb.h>
 
 // Each layer gets a name for readability, which is then used in the keymap
 // matrix below. The underscores don't mean anything - you can have a layer
@@ -80,6 +82,13 @@
             key-positions = <19 24>;
             bindings = <&caps_word>;
         };
+    };
+
+
+    // Time (ms) before sticky layer is released
+    // matches QMK setting
+    &sl {
+        release-after-ms = <1500>;
     };
 
     keymap {
