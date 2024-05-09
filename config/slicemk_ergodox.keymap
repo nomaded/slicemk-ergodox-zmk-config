@@ -58,7 +58,11 @@
 #define LALT_DT &bhm LALT DOT
 #define RSFT_SH &bhm RSFT FSLH
 
-
+// Time (ms) before sticky layer is released
+// matches QMK setting
+&sl {
+    release-after-ms = <1500>;
+};
 
 / {
     behaviors {
@@ -87,12 +91,6 @@
         };
     };
 
-
-    // Time (ms) before sticky layer is released
-    // matches QMK setting
-    // &sl {
-    //     release-after-ms = <1500>;
-    // };
 
     keymap {
         compatible = "zmk,keymap";
