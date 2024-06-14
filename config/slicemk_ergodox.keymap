@@ -67,10 +67,9 @@
 // Change behavior of caps_word to stop on modifier by setting
 // ignore-modifiers to false using /delete-property/
 // See: https://github.com/zmkfirmware/zmk/issues/1410
-
 &caps_word {
     /delete-property/ ignore-modifiers;
-    //continue-list = <UNDERSCORE  BACKSPACE DELETE LSHFT RSHFT>;
+    continue-list = <UNDERSCORE MINUS BACKSPACE DELETE>;
 };
 
 / {
