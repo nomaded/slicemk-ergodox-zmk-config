@@ -95,7 +95,8 @@
         capwd: combo_capsword {
             timeout-ms = <150>;
             //key-positions = <19 24>;
-            key-positions = <20 23>; // combo of Y and F for caps_word
+            //key-positions = <20 23>; // combo of Y and F for caps_word
+            key-positions = <18 25>; // combo of DOT and C for caps_word
             bindings = <&caps_word>;
         };
     };
