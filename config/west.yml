@@ -2,10 +2,26 @@ manifest:
   remotes:
     - name: slicemk
       url-base: https://github.com/slicemk
+    # Additional modules containing boards/shields/custom code can be listed here as well
+    # See https://docs.zephyrproject.org/3.2.0/develop/west/manifest.html#projects
+    #
+    # Adding support for urob's zmk-helpers
+    #- name: urob
+    #  url-base: https://github.com/urob
+    #
+    # Switching my my own fork of urob's zmk-helpers
+    - name: nomaded
+      url-base: https://github.com/nomaded
   projects:
     - name: zmk
       remote: slicemk
       revision: main
       import: app/west.yml
+    - name: zmk-helpers
+    # Adding support for urob's zmk-helpers
+    # remote: urob
+    # revision: main
+      remote: nomaded
+      revision: main
   self:
     path: config
