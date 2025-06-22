@@ -81,11 +81,13 @@
 
 // used for below homerow mods
 // left-hand keys
-#define KEYS_L LT0 LT1 LT2 LT3 LT4 LT5 LT6 LM0 LM1 LM2 LM3 LM4 LM6 LB0 LB1 LB2 LB3 LB4 LB5 LB6
-#define KEYS_L2 LN0 LN1 LN2 LN3 LN4 LN5 LN6 LF1 LF2 LF3 LF4 LF5
+//#define KEYS_L LT0 LT1 LT2 LT3 LT4 LT5 LT6 LM0 LM1 LM2 LM3 LM4 LM6 LB0 LB1 LB2 LB3 LB4 LB5 LB6
+//#define KEYS_L2 LN0 LN1 LN2 LN3 LN4 LN5 LN6 LF1 LF2 LF3 LF4 LF5
+#define KEYS_L LT0 LT1 LT2 LT3 LT4 LT5 LT6 LM0 LM1 LM2 LM3 LM4 LM6 LB0 LB1 LB2 LB3 LB4 LB5 LB6 LN0 LN1 LN2 LN3 LN4 LN5 LN6 LF1 LF2 LF3 LF4 LF5
 // right-hand keys
-#define KEYS_R RT0 RT1 RT2 RT3 RT4 RT5 RT6 RM0 RM1 RM2 RM3 RM4 RM6 RB0 RB1 RB2 RB3 RB4 RB5 RB6
-#define KEYS_R2 RN0 RN1 RN2 RN3 RN4 RN5 RN6 RF1 RF2 RF3 RF4 RF5
+//#define KEYS_R RT0 RT1 RT2 RT3 RT4 RT5 RT6 RM0 RM1 RM2 RM3 RM4 RM6 RB0 RB1 RB2 RB3 RB4 RB5 RB6
+//#define KEYS_R2 RN0 RN1 RN2 RN3 RN4 RN5 RN6 RF1 RF2 RF3 RF4 RF5
+#define KEYS_R RT0 RT1 RT2 RT3 RT4 RT5 RT6 RM0 RM1 RM2 RM3 RM4 RM6 RB0 RB1 RB2 RB3 RB4 RB5 RB6 RN0 RN1 RN2 RN3 RN4 RN5 RN6 RF1 RF2 RF3 RF4 RF5
 // thumb keys
 #define THUMBS LH0 LH1 LH2 LH3 LH4 LH5 RH0 RH1 RH2 RH3 RH4 RH5
 
@@ -125,7 +127,8 @@
             quick-tap-ms = <175>;
             require-prior-idle-ms = <150>;
             bindings = <&kp>, <&kp>;
-            hold-trigger-key-positions = <KEYS_R KEYS_R2 THUMBS>;
+            //hold-trigger-key-positions = <KEYS_R KEYS_R2 THUMBS>;
+            hold-trigger-key-positions = <KEYS_R THUMBS>;
             // delay positional check until key release
             hold-trigger-on-release;
         };
@@ -139,7 +142,8 @@
             quick-tap-ms = <175>;
             require-prior-idle-ms = <150>;
             bindings = <&kp>, <&kp>;
-            hold-trigger-key-positions = <KEYS_L KEYS_L2 THUMBS>;
+            //hold-trigger-key-positions = <KEYS_L KEYS_L2 THUMBS>;
+            hold-trigger-key-positions = <KEYS_L THUMBS>;
             // delay positional check until key release
             hold-trigger-on-release;
         };
