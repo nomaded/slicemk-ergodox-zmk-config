@@ -301,14 +301,14 @@
 //                                  `--------------------'  `--------------------'
             bindings = <
     &bootloader
-    -------  -------  -------  -------  -------  -------  -------  -------  -------  -------  -------  -------  -------   &kp RBRC
-    -------  &kp Q    &kp W    &kp E    &kp R    &kp T    -------  -------  &kp Y    &kp U    &kp I    &kp O    &kp P     &kp LBRC
-    -------  &kp A    &kp S    &kp D    &kp F    &kp G                      &kp H    &kp J    &kp K    &kp L    &kp SEMI  &kp SQT
-    -------  LSFT__Z  LALT__X  LCTL__C  LGUI__V  &kp B    -------  -------  &kp N    RGUI__M  RCTL_CM  LALT_DT  RSFT_SH   &kp RSFT
-    TD_RST   -------  -------  -------  -------                                      -------  -------  -------  -------   TD_QW
-                                                 -------  -------  -------  -------
-                                        TD_LLYQ  -------  -------  -------  -------  TD_RLYQ
-                                                          -------  -------
+    _______  _______  _______  _______  _______  _______  _______  _______  _______  _______  _______  _______  _______   &kp RBRC
+    _______  &kp Q    &kp W    &kp E    &kp R    &kp T    _______  _______  &kp Y    &kp U    &kp I    &kp O    &kp P     &kp LBRC
+    _______  &kp A    &kp S    &kp D    &kp F    &kp G                      &kp H    &kp J    &kp K    &kp L    &kp SEMI  &kp SQT
+    _______  LSFT__Z  LALT__X  LCTL__C  LGUI__V  &kp B    _______  _______  &kp N    RGUI__M  RCTL_CM  LALT_DT  RSFT_SH   &kp RSFT
+    TD_RST   _______  _______  _______  _______                                      _______  _______  _______  _______   TD_QW
+                                                 _______  _______  _______  _______
+                                        TD_LLYQ  _______  _______  _______  _______  TD_RLYQ
+                                                          _______  _______
             >;
         };
         punct_dv {
@@ -336,9 +336,9 @@
             bindings = <
     &bootloader
     XXXXXXX  &kp F1     &kp F2     &kp F3     &kp F4     &kp F5    XXXXXXX    XXXXXXX   &kp F6     &kp F7     &kp F8     &kp F9    &kp F10    &kp F11
-    XXXXXXX  XXXXXXX    XXXXXXX    XXXXXXX    XXXXXXX    XXXXXXX   -------    -------   &kp GRAVE  &kp LBKT   &kp RBKT   &kp LBRC  &kp RBRC   &kp F12
-    -------  XXXXXXX    XXXXXXX    XXXXXXX    XXXXXXX    &kp BSLH                       &kp FSLH   &kp MINUS  &kp UNDER  &kp LPAR  &kp RPAR   CTL_ESC
-    -------  &kp LG(X)  &kp LG(X)  &kp LG(C)  &kp LG(V)  XXXXXXX   &kp BSLH   &kp FSLH  &kp TILDE  &kp EQUAL  &kp PLUS   &kp PIPE  &kp QMARK  -------
+    XXXXXXX  XXXXXXX    XXXXXXX    XXXXXXX    XXXXXXX    XXXXXXX   _______    _______   &kp GRAVE  &kp LBKT   &kp RBKT   &kp LBRC  &kp RBRC   &kp F12
+    _______  XXXXXXX    XXXXXXX    XXXXXXX    XXXXXXX    &kp BSLH                       &kp FSLH   &kp MINUS  &kp UNDER  &kp LPAR  &kp RPAR   CTL_ESC
+    _______  &kp LG(X)  &kp LG(X)  &kp LG(C)  &kp LG(V)  XXXXXXX   &kp BSLH   &kp FSLH  &kp TILDE  &kp EQUAL  &kp PLUS   &kp PIPE  &kp QMARK  _______
     XXXXXXX  XXXXXXX    XXXXXXX    XXXXXXX    &kp DEL                                              &kp SPC    XXXXXXX    XXXXXXX   XXXXXXX    XXXXXXX
                                                          &kp BSLH  XXXXXXX    XXXXXXX   &kp FSLH
                                               TD_LLYD    GUI_ENT   XXXXXXX    XXXXXXX   CTL_TAB    TD_RLYD
@@ -369,14 +369,14 @@
 //                                  `--------------------'  `--------------------'
             bindings = <
     &bootloader
-    -------  -------  -------  -------  -------  -------  -------  -------   -------   -------    -------    -------    -------   -------
-    -------  -------  -------  -------  -------  -------  -------  -------   -------   &kp MINUS  &kp EQUAL  &kp UNDER  &kp PLUS  -------
-    -------  -------  -------  -------  -------  -------                     &kp LBKT  &kp SQT    &kp DQT    &kp LPAR   &kp RPAR  -------
-    -------  -------  -------  -------  -------  -------  -------  &kp LBKT  -------   &kp RBKT   &kp RBRC   -------    &kp LBRC  -------
-    -------  -------  -------  -------  -------                                        -------    -------    -------    -------   -------
-                                                 -------  -------  -------   -------
-                                        TD_LLYQ  -------  -------  -------   -------   TD_RLYQ
-                                                          -------  -------
+    _______  _______  _______  _______  _______  _______  _______  _______   _______   _______    _______    _______    _______   _______
+    _______  _______  _______  _______  _______  _______  _______  _______   _______   &kp MINUS  &kp EQUAL  &kp UNDER  &kp PLUS  _______
+    _______  _______  _______  _______  _______  _______                     &kp LBKT  &kp SQT    &kp DQT    &kp LPAR   &kp RPAR  _______
+    _______  _______  _______  _______  _______  _______  _______  &kp LBKT  _______   &kp RBKT   &kp RBRC   _______    &kp LBRC  _______
+    _______  _______  _______  _______  _______                                        _______    _______    _______    _______   _______
+                                                 _______  _______  _______   _______
+                                        TD_LLYQ  _______  _______  _______   _______   TD_RLYQ
+                                                          _______  _______
             >;
         };
         nav_dv {
@@ -437,14 +437,14 @@
 //                                  `--------------------'  `--------------------'
             bindings = <
     &bootloader
-    -------  -------  -------  -------  -------  -------  -------  -------   -------   -------   -------  -------  -------  -------
-    -------  -------  -------  -------  -------  -------  -------  -------   -------   -------   -------  -------  -------  -------
-    -------  -------  -------  -------  -------  -------                     &kp LBKT  -------   -------  -------  -------  -------
-    -------  -------  -------  -------  -------  -------  -------  &kp LBKT  -------   -------   -------  -------  -------  -------
-    -------  -------  -------  -------  -------                                        -------   -------  -------  -------  -------
-                                                 -------  -------  -------   -------
-                                        TD_LLYQ  -------  -------  -------   -------   TD_RLYQ
-                                                          -------  -------
+    _______  _______  _______  _______  _______  _______  _______  _______   _______   _______   _______  _______  _______  _______
+    _______  _______  _______  _______  _______  _______  _______  _______   _______   _______   _______  _______  _______  _______
+    _______  _______  _______  _______  _______  _______                     &kp LBKT  _______   _______  _______  _______  _______
+    _______  _______  _______  _______  _______  _______  _______  &kp LBKT  _______   _______   _______  _______  _______  _______
+    _______  _______  _______  _______  _______                                        _______   _______  _______  _______  _______
+                                                 _______  _______  _______   _______
+                                        TD_LLYQ  _______  _______  _______   _______   TD_RLYQ
+                                                          _______  _______
            >;
         };
         reset_numpad {
@@ -471,14 +471,14 @@
 //                                  `--------------------'  `--------------------'
             bindings = <
     &bootloader
-    &bt BT_CLR    &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &bootloader  &bootloader  XXXXXXX       &kp KP_NLCK  &kp KP_SLASH  &kp KP_ASTERISK  &kp KP_MINUS  &kp SLCK
-    &out OUT_TOG  XXXXXXX       XXXXXXX       XXXXXXX       XXXXXXX       XXXXXXX       XXXXXXX      XXXXXXX      XXXXXXX       &kp KP_N7    &kp KP_N8     &kp KP_N9        &kp KP_PLUS   &kp PSCRN
-    &out OUT_USB  XXXXXXX       XXXXXXX       XXXXXXX       XXXXXXX       XXXXXXX                                 XXXXXXX       &kp KP_N4    &kp KP_N5     &kp KP_N6        &kp KP_EQUAL  &kp PAUSE_BREAK
-    &out OUT_BLE  XXXXXXX       XXXXXXX       XXXXXXX       XXXXXXX       XXXXXXX       XXXXXXX      XXXXXXX      &kp KP_N0     &kp KP_N1    &kp KP_N2     &kp KP_N3        &kp KP_DOT    &trans
+    &bt BT_CLR    &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3 &bt BT_SEL 4  &bootloader  &bootloader   XXXXXXX       &kp KP_NLCK  &kp KP_SLASH  &kp KP_ASTERISK  &kp KP_MINUS  &kp SLCK
+    &out OUT_TOG  XXXXXXX       XXXXXXX       XXXXXXX       XXXXXXX      XXXXXXX       XXXXXXX      XXXXXXX       XXXXXXX       &kp KP_N7    &kp KP_N8     &kp KP_N9        &kp KP_PLUS   &kp PSCRN
+    &out OUT_USB  XXXXXXX       XXXXXXX       XXXXXXX       XXXXXXX      XXXXXXX                                  XXXXXXX       &kp KP_N4    &kp KP_N5     &kp KP_N6        &kp KP_EQUAL  &kp PAUSE_BREAK
+    &out OUT_BLE  XXXXXXX       XXXXXXX       XXXXXXX       XXXXXXX      XXXXXXX       XXXXXXX      XXXXXXX       &kp KP_N0     &kp KP_N1    &kp KP_N2     &kp KP_N3        &kp KP_DOT    &trans
     TD_RST        XXXXXXX       XXXXXXX       XXXXXXX       XXXXXXX                                                             &kp SPACE    &none         &none            &none         &none
-                                                                          &soft_off     XXXXXXX      XXXXXXX      &soft_off
-                                                            XXXXXXX       XXXXXXX       XXXXXXX      XXXXXXX      &kp KP_ENTER  &kp KP_N0
-                                                                                        XXXXXXX      XXXXXXX
+                                                                         &soft_off     XXXXXXX      XXXXXXX       &soft_off
+                                                            XXXXXXX      XXXXXXX       XXXXXXX      XXXXXXX       &kp KP_ENTER  &kp KP_N0
+                                                                                       XXXXXXX      XXXXXXX
             >;
         };
 
