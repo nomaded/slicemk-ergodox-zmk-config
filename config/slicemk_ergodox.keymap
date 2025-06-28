@@ -31,7 +31,7 @@
 
 // Helpful defines
 #define XXXXXXX &none
-#define _______ $trans
+#define _______ &trans
 
 // Layer-related
 #define TOG_RST &tog _RESET_NUM
