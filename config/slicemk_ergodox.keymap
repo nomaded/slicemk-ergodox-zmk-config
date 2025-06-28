@@ -476,7 +476,7 @@
     &out OUT_USB  XXXXXXX       XXXXXXX       XXXXXXX       XXXXXXX      XXXXXXX                                  XXXXXXX       &kp KP_N4    &kp KP_N5     &kp KP_N6        &kp KP_EQUAL  &kp PAUSE_BREAK
     &out OUT_BLE  XXXXXXX       XXXXXXX       XXXXXXX       XXXXXXX      XXXXXXX       XXXXXXX      XXXXXXX       &kp KP_N0     &kp KP_N1    &kp KP_N2     &kp KP_N3        &kp KP_DOT    &trans
     TD_RST        XXXXXXX       XXXXXXX       XXXXXXX       XXXXXXX                                                             &kp SPACE    &none         &none            &none         &none
-                                                                         &soft_off     XXXXXXX      XXXXXXX       &soft_off
+                                                                         XXXXXXX       XXXXXXX      XXXXXXX       XXXXXXX
                                                             XXXXXXX      XXXXXXX       XXXXXXX      XXXXXXX       &kp KP_ENTER  &kp KP_N0
                                                                                        XXXXXXX      XXXXXXX
             >;
