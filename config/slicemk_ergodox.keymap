@@ -206,8 +206,8 @@
         compatible = "zmk,combos";
         caplk: combo_capslock {
             timeout-ms = <150>;
-            //key-positions = <41 54>;
-            key-positions = <LB5 RB5>; // left and right shift
+            key-positions = <41 54>; // left and right shift
+            //key-positions = <LB5 RB5>; // left and right shift
             bindings = <&kp CAPSLOCK>;
         };
         capwd: combo_capsword {
@@ -216,7 +216,8 @@
             //key-positions = <20 23>; // Y and F for caps_word
             //key-positions = <18 25>; // DOT and C for caps_word
             //key-positions = <LT5 RT5>; // TAB and FLSH for caps_word
-            key-positions = <LM5 RM5>; // combo of CTL_ESC and MINUS for caps_word, using key-labels
+            key-positions = <29 40>; // combo of CTL_ESC and MINUS for caps_word, using key-labels
+            //key-positions = <LM5 RM5>; // combo of CTL_ESC and MINUS for caps_word, using key-labels
             bindings = <&caps_word>;
         };
     };
